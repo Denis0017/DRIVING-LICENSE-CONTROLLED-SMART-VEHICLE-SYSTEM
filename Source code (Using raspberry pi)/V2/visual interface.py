@@ -6,8 +6,8 @@ from PIL import ImageTk
 import pymysql
 
 def rfid_read():
-    rfid = SimpleMFRC522()
-    id, text = rfid.read()
+    # rfid = SimpleMFRC522()
+    # id, text = rfid.read()
     "messagebox.showinfo('id',id)"
     try:
         con=pymysql.connect(host='localhost',user='root',password='root')
@@ -34,12 +34,12 @@ def selection_page():
 def login_page():
     global login_window
     login_window=Tk()
-    login_window.resizable(0,0)
+    # login_window.resizable(0,0)
     login_window.title('LoginPage')
 
-    bgImage=ImageTk.PhotoImage(file='app\bg.jpg')
-    bgLable =Label(login_window,image=bgImage)
-    bgLable.grid(row=0,column=0)
+    # bgImage=ImageTk.PhotoImage(file='app\bg.jpg')
+    # bgLable =Label(login_window,image=bgImage)
+    # bgLable.grid(row=0,column=0)
 
     heading=Label(login_window,text='USER LOGIN',font=('microsoft yahei UI light',23,'bold'),bg='white',fg='firebrick1')
     heading.place(x=605,y=120)
