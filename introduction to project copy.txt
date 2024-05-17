@@ -1,0 +1,25 @@
+there is a huge problem in india of underage people driving vehicale, which cause to high risk of accident so i'm working on a project which help government to solve that issue where central system will have licence database and remote device will in vehicale which authenticate persons licence and allowe to drive vehicale
+
+this is a project which contain two kind of devices 
+1. centaral device(database server)
+2. remote device(car music player)
+
+1. centarl device operation:
+    this device will use for data management and for creating licence 
+    new licence creating process:
+        fill some details like name, DOB, Mobile number, licence aprovel date, licence expirey date, licence number(button which will reade RFID card Unick number), Fringerprint(button which will take right hand index Fringerprint image using fingerprint sensor), Face Photograph(button which will take image of person's)
+        then after clicking continue button it will insert that all data in to database  and also write such data(name, DOB, Mobile Number, licence approvel date. licence expirey date) into RFID card with some encription
+    
+2. remote device operation:
+    this device normaly run as media player which usally avilable in evrey vehicale 
+    now when the car get unlock by key the system will start and ask for valid licence which is alredy linked with that device(already has profil with that licence) then if system get valid input such as RFID scanner get that licence or get valid fingerprint input only then the driver can stat the vehicle and system will go to medial player page but it will continusely monitor the face of the driver with the profils phototghraph that the driver id authenticated,
+    there will be profil option/icon on up right corner by clicking that u can see the driver's all details which is available in database server
+        if you see below that there will be three option 
+            1. logout(this option will logout from that profile and stop the car tern off the engine)
+            2. Delete profil(this option will unlink that profile from that device and remove all the data which is in that device of that perticuler device)
+            3. new profile : this option need and internet connection because we need to fetch the data from server
+                this will first ask for driving licence (RFID scanner will decode that encripted card take the licence number) then it will search in the database if its valid then take fetch all the data from server to that device 
+                after clicking next button will ask for confermation to add profile (now if user will use that licenceto drive vehicale it can acces the vehicle if the finger print and face match)
+
+this system will devlop using Python programing language 
+and will use PymySql for database management
