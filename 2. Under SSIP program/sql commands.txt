@@ -1,0 +1,51 @@
+Certainly! Here are some basic commands for the MySQL command line client:
+
+- To connect to a MySQL server from the command line:
+  mysql -u username -p
+  
+  (You will be prompted to enter the password after this command.)
+
+To create a new database:
+  CREATE DATABASE database_name;  
+
+To remove/delete all databases:
+  drop database database_name;
+
+To select a database to work with:
+  USE database_name;
+  
+To show all databases:
+  SHOW DATABASES;
+  
+To display all tables within the current database:
+  SHOW TABLES;
+  
+To see the structure of a table (the columns it contains):
+  DESCRIBE table_name;  
+
+To add data to a table:
+  INSERT INTO table_name (column1, column2) VALUES (value1, value2);
+  
+To retrieve data from a table:
+  SELECT * FROM table_name;
+  
+To update data in a table:
+  UPDATE table_name SET column1 = value1 WHERE condition;  
+
+To delete data from a table:
+  DELETE FROM table_name WHERE condition;
+  
+To exit the MySQL command line client:
+  EXIT;
+  
+
+
+These commands are the essentials to get started with managing databases and tables in MySQL. Remember to replace `username`, `database_name`, `table_name`, `column1`, `column2`, `value1`, `value2`, and `condition` with your actual database details. Always ensure you have the necessary permissions to execute these commands.
+
+Source: Conversation with Bing, 5/18/2024
+(1) 6.5.1 mysql — The MySQL Command-Line Client. https://dev.mysql.com/doc/refman/8.0/en/mysql.html.
+(2) MySQL Commands: Full List With Examples - InterviewBit. https://www.interviewbit.com/blog/mysql-commands/.
+(3) How To Use MySQL From The Command Line [With Examples]. https://www.softwaretestinghelp.com/use-mysql-from-command-line/.
+(4) MySQL Cheat Sheet | LearnSQL.com. https://learnsql.com/blog/mysql-cheat-sheet/.
+(5) MySQL Commands Cheat-Sheet - javatpoint. https://www.javatpoint.com/mysql-commands-cheat-sheet.
+(6) MySQL Cheat Sheet - MySQL Tutorial. https://www.mysqltutorial.org/mysql-cheat-sheet/.
