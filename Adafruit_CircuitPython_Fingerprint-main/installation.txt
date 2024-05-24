@@ -1,0 +1,26 @@
+To install a Python library from a local directory that contains the source files, you can use `pip` with the `-e` option for an editable install. This is useful if the directory contains a `setup.py` or `pyproject.toml` file. Here's how you can do it:
+
+1. Open a terminal or command prompt.
+2. Navigate to the directory where the library files are located.
+3. Run the following command:
+   ```bash
+   pip install -e .
+   ```
+   The `.` at the end of the command refers to the current directory.
+
+This will install the library in "editable" mode, which means that any changes you make to the source files will be reflected in the library without needing to reinstall it¹.
+
+If the library doesn't have a `setup.py` or `pyproject.toml` file, you might need to check the documentation provided with the library for specific installation instructions. Sometimes, libraries will include a `requirements.txt` file, which lists all the dependencies. You can install all the dependencies at once with:
+```bash
+pip install -r requirements.txt
+```
+
+If you encounter any issues or have further questions, feel free to ask! 😊
+
+Source: Conversation with Copilot, 5/24/2024
+(1) Installing Python packages from local file system folder to virtualenv .... https://stackoverflow.com/questions/15031694/installing-python-packages-from-local-file-system-folder-to-virtualenv-with-pip.
+(2) Install a Python package into a different directory using pip?. https://stackoverflow.com/questions/2915471/install-a-python-package-into-a-different-directory-using-pip.
+(3) How to Manually Install Python Packages - ActiveState. https://www.activestate.com/resources/quick-reads/how-to-manually-install-python-packages/.
+(4) python pip - install from local dir - Stack Overflow. https://stackoverflow.com/questions/41535915/python-pip-install-from-local-dir.
+(5) Local project installs - pip documentation v24.0. https://pip.pypa.io/en/stable/topics/local-project-installs/.
+(6) en.wikipedia.org. https://en.wikipedia.org/wiki/Pip_(package_manager).
