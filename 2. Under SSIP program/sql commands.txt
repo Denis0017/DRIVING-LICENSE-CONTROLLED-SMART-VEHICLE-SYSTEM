@@ -5,6 +5,9 @@ Certainly! Here are some basic commands for the MySQL command line client:
   
   (You will be prompted to enter the password after this command.)
 
+To execute script:
+  mysql -u root -p sales < Path/to/script/script.sql
+
 To create a new database:
   CREATE DATABASE database_name;  
 
