@@ -1,4 +1,4 @@
-### Project Overview: Smart License Authentication System to Prevent Underage Driving
+### Project Overview: SafeDrive-Advanced-Driver-Authentication-System
 
 In response to the significant issue of underage driving in India, which greatly increases the risk of accidents, we are developing an innovative solution. This project, designed to assist the government in addressing this problem, involves a central system containing a license database and a remote device installed in vehicles to authenticate a driver’s license before allowing the vehicle to start.
 
