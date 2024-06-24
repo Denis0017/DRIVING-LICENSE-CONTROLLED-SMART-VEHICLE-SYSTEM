@@ -3,27 +3,15 @@ from tkinter import ttk
 from database import execute_query
 
 class Page1(tk.Frame):
-    def __init__(self, parent, controller):
-        super().__init__(parent)
+    def __init__(self, parent, controller, bg="white"):
+        super().__init__(parent, bg=bg)
         self.controller = controller
 
         self.grid_rowconfigure(1, weight=1)
         self.grid_columnconfigure(0, weight=1)
 
-        label = tk.Label(self, text="This is Page 1")
+        label = tk.Label(self, text="This is Page 1", bg=bg)
         label.grid(row=0, column=0, pady=10, padx=10, sticky="n")
-
-        button_frame = tk.Frame(self)
-        button_frame.grid(row=1, column=0, pady=10, sticky="ew")
-
-        self.button1 = tk.Button(button_frame, text="Page 1", state="disabled")
-        self.button1.pack(side="left", padx=5)
-
-        self.button2 = tk.Button(button_frame, text="Go to Page 2", command=lambda: controller.show_page("Page2"))
-        self.button2.pack(side="left", padx=5)
-
-        self.button3 = tk.Button(button_frame, text="Go to Page 3", command=lambda: controller.show_page("Page3"))
-        self.button3.pack(side="left", padx=5)
 
         # Create a frame for the table
         table_frame = ttk.Frame(self)
@@ -64,14 +52,6 @@ class Page1(tk.Frame):
         rows, _ = execute_query(query)
         for row in rows:
             self.my_table.insert("", "end", values=row)
-
-    def enable_buttons(self):
-        self.button1.config(state="normal")
-        self.button2.config(state="normal")
-        self.button3.config(state="normal")
-
-    def disable_current_page_button(self):
-        self.button1.config(state="disabled")
 
     def sort_column(self, col, reverse):
         data = [(self.my_table.set(child, col), child) for child in self.my_table.get_children("")]

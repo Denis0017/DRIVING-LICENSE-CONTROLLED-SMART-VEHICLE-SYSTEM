@@ -1,14 +1,15 @@
 import pymysql
-import getpass
 import tkinter as tk
-from tkinter import messagebox
+from tkinter import messagebox, filedialog
+import cv2
+from PIL import Image, ImageTk
 
 def connect_to_db():
     try:
         connection = pymysql.connect(
             host='localhost', 
-            user=input("Enter your MySQL username: "), 
-            password=getpass.getpass("Enter your MySQL password: "),
+            user="root", 
+            password="1223",
             database='userdata'
         )
         print("Database connected successfully")
@@ -39,6 +40,31 @@ def main():
         add_record(cursor, name_var.get(), dob_var.get(), mobile_var.get(), approval_var.get(), expiry_var.get(), license_var.get(), rfid_var.get(), fingerprint_var.get(), photo_var.get())
         connection.commit()
 
+    def select_file(var):
+        file_path = filedialog.askopenfilename()
+        if file_path:
+            with open(file_path, 'rb') as file:
+                var.set(file.read())
+
+    def capture_photo(var):
+        cap = cv2.VideoCapture(0)
+        ret, frame = cap.read()
+        if ret:
+            cv2.imshow('Captured Photo', frame)
+            cv2.waitKey(0)
+            cap.release()
+            cv2.destroyAllWindows()
+            _, buffer = cv2.imencode('.jpg', frame)
+            var.set(buffer.tobytes())
+        else:
+            messagebox.showerror("Error", "Failed to capture photo")
+
+    def capture_fingerprint(var):
+        # Placeholder function to simulate fingerprint data retrieval
+        # Replace this with actual sensor data retrieval logic
+        fingerprint_data = b'\x00\x01\x02\x03\x04'  # Dummy binary data
+        var.set(fingerprint_data)
+
     root = tk.Tk()
     root.title("Add Data to Database")
 
@@ -50,8 +76,8 @@ def main():
     tk.Label(root, text="License Expiry Date (YYYY-MM-DD):").grid(row=4, column=0)
     tk.Label(root, text="License Number:").grid(row=5, column=0)
     tk.Label(root, text="RFID Card:").grid(row=6, column=0)
-    tk.Label(root, text="Fingerprint (as binary data):").grid(row=7, column=0)
-    tk.Label(root, text="Photo (as binary data):").grid(row=8, column=0)
+    tk.Label(root, text="Fingerprint:").grid(row=7, column=0)
+    tk.Label(root, text="Photo:").grid(row=8, column=0)
 
     # Entry fields
     name_var = tk.StringVar()
@@ -68,10 +94,12 @@ def main():
     tk.Entry(root, textvariable=license_var).grid(row=5, column=1)
     rfid_var = tk.StringVar()
     tk.Entry(root, textvariable=rfid_var).grid(row=6, column=1)
+    
     fingerprint_var = tk.StringVar()
-    tk.Entry(root, textvariable=fingerprint_var).grid(row=7, column=1)
+    tk.Button(root, text="Capture Fingerprint", command=lambda: capture_fingerprint(fingerprint_var)).grid(row=7, column=1)
+    
     photo_var = tk.StringVar()
-    tk.Entry(root, textvariable=photo_var).grid(row=8, column=1)
+    tk.Button(root, text="Capture Photo", command=lambda: capture_photo(photo_var)).grid(row=8, column=1)
 
     # Button
     tk.Button(root, text="Add Record", command=on_add).grid(row=9, column=0)
